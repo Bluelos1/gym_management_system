@@ -20,6 +20,8 @@ public class Trainer {
     @Column(name = "gender")
     private Gender gender;
     @Column(name = "qualification")
+    @Enumerated(EnumType.STRING)
+
     private TrainerQualification qualification;
 
 

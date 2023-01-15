@@ -5,6 +5,8 @@ import pl.edu.pjatk.gym_management_system.model.enums.TicketCategory;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "Tickets")
@@ -18,7 +20,28 @@ public class Ticket {
     @Column(name="End_date")
     private LocalDate endDate;
     @Column(name="Ticket_category")
+    @Enumerated(EnumType.STRING)
+
     private TicketCategory ticketCategory;
+
+    @ManyToMany(mappedBy = "tickets",cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
+    private Set<Building> buildings=new HashSet<>();
+
+    @OneToOne
+    @JoinColumn(name = "trainer_id")
+    private Trainer trainer;
+
+    @OneToOne
+    @JoinColumn(name = "Client_id")
+    private Client client;
+
+    public Trainer getTrainer() {
+        return trainer;
+    }
+
+    public void setTrainer(Trainer trainer) {
+        this.trainer = trainer;
+    }
 
     public Long getId() {
         return id;

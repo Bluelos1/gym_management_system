@@ -19,6 +19,7 @@ public class Client {
     @Column(name="Age")
     private int age;
     @Column(name="Gender")
+    @Enumerated(EnumType.STRING)
     private Gender gender;
 
     public Client(){
