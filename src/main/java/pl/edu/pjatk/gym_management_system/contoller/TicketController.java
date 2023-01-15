@@ -32,10 +32,7 @@ public class TicketController {
         return ResponseEntity.ok(ticketService.getTicketById(id));
     }
 
-    @GetMapping("/get")
-    public ResponseEntity<Ticket> getTicketByIdRequestParam(@RequestParam(name = "id") Long id){
-        return ResponseEntity.ok(ticketService.getTicketById(id));
-    }
+
 
     @DeleteMapping
     public ResponseEntity<String> deleteTicketById(@RequestParam("id") Long id){

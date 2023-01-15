@@ -33,10 +33,6 @@ public class BuildingController {
     public ResponseEntity<Building> getBuidlingById(@PathVariable("id")Long id){
         return ResponseEntity.ok(buildingService.getBuildingById(id));
     }
-    @GetMapping("/get")
-    public ResponseEntity<Building> getBuildingByIdRequestParam(@RequestParam(name = "id") Long id){
-        return ResponseEntity.ok(buildingService.getBuildingById(id));
-    }
     @DeleteMapping
     public ResponseEntity<String> deleteBuildingById(@RequestParam("id") Long id){
         buildingService.deleteBuildingById(id);

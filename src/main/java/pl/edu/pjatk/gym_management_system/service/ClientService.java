@@ -3,6 +3,7 @@ package pl.edu.pjatk.gym_management_system.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.edu.pjatk.gym_management_system.model.Client;
+import pl.edu.pjatk.gym_management_system.model.Ticket;
 import pl.edu.pjatk.gym_management_system.repository.ClientRepository;
 
 import java.util.List;
@@ -35,7 +36,11 @@ public class ClientService {
     }
 
     public Client getClientById(Long id){
-        return clientRepository.getReferenceById(id);
+        Optional<Client> a = clientRepository.findById(id);
+        if (a.isPresent()){
+            return a.get();
+        }
+        throw new IllegalArgumentException();
     }
 
     public void deleteClientById(Long id){

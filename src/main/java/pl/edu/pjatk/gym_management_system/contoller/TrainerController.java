@@ -32,13 +32,10 @@ public class TrainerController {
         return ResponseEntity.ok(trainerService.getTrainerById(id));
     }
 
-    @GetMapping("/get")
-    public ResponseEntity<Trainer> getTrainerByIdRequestParam(@RequestParam(name = "id") Long id){
-        return ResponseEntity.ok(trainerService.getTrainerById(id));
-    }
+
 
     @DeleteMapping
-    public ResponseEntity<String> deleteTrainerById(@PathVariable("id") Long id){
+    public ResponseEntity<String> deleteTrainerById(@RequestParam("id") Long id){
         trainerService.deleteTrainerById(id);
         return ResponseEntity.ok("ok");
     }

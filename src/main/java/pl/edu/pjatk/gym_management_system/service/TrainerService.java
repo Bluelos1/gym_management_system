@@ -3,6 +3,7 @@ package pl.edu.pjatk.gym_management_system.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.edu.pjatk.gym_management_system.model.Client;
+import pl.edu.pjatk.gym_management_system.model.Ticket;
 import pl.edu.pjatk.gym_management_system.model.Trainer;
 import pl.edu.pjatk.gym_management_system.repository.ClientRepository;
 import pl.edu.pjatk.gym_management_system.repository.TrainerRepository;
@@ -37,7 +38,11 @@ public class TrainerService {
     }
 
     public Trainer getTrainerById(Long id){
-        return trainerRepository.getReferenceById(id);
+        Optional<Trainer> a = trainerRepository.findById(id);
+        if (a.isPresent()){
+            return a.get();
+        }
+        throw new IllegalArgumentException();
     }
 
     public void deleteTrainerById(Long id){

@@ -6,6 +6,7 @@ import pl.edu.pjatk.gym_management_system.model.Ticket;
 import pl.edu.pjatk.gym_management_system.repository.TicketRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TicketService {
@@ -26,7 +27,11 @@ public class TicketService {
     }
 
     public Ticket getTicketById(Long id){
-        return ticketRepository.getReferenceById(id);
+        Optional<Ticket> a = ticketRepository.findById(id);
+        if (a.isPresent()){
+            return a.get();
+        }
+        throw new IllegalArgumentException();
     }
     public void deleteTicketById(Long id){
         ticketRepository.deleteById(id);

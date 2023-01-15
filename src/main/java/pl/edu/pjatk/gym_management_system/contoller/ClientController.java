@@ -33,13 +33,10 @@ public class ClientController {
         return ResponseEntity.ok(clientService.getClientById(id));
     }
 
-    @GetMapping("/get")
-    public ResponseEntity<Client> getClientByIdRequestParam(@RequestParam(name = "id") Long id) {
-        return ResponseEntity.ok(clientService.getClientById(id));
-    }
+
 
     @DeleteMapping
-    public ResponseEntity<String> deleteClientById(@PathVariable("id") Long id){
+    public ResponseEntity<String> deleteClientById(@RequestParam("id") Long id){
         clientService.deleteClientById(id);
         return ResponseEntity.ok("ok");
     }

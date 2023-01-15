@@ -34,10 +34,7 @@ public class EquipmentController {
         return ResponseEntity.ok(equipmentService.getEquipmentById(id));
     }
 
-    @GetMapping("/get")
-    public ResponseEntity<Equipment> getEquipmentByIdRequestParam(@RequestParam(name = "id") Long id){
-        return ResponseEntity.ok(equipmentService.getEquipmentById(id));
-    }
+
 
     @DeleteMapping
     public ResponseEntity<String> deleteEquipmentById(@RequestParam("id") Long id){
