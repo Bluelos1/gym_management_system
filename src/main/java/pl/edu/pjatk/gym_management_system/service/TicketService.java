@@ -3,6 +3,7 @@ package pl.edu.pjatk.gym_management_system.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.edu.pjatk.gym_management_system.model.Ticket;
+import pl.edu.pjatk.gym_management_system.model.enums.TicketCategory;
 import pl.edu.pjatk.gym_management_system.repository.TicketRepository;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public class TicketService {
     private TicketRepository ticketRepository;
 
     @Autowired
-    public TicketService(TicketRepository ticketRepository){
+    public TicketService(TicketRepository ticketRepository, ClientService clientService){
         this.ticketRepository = ticketRepository;
     }
 
@@ -35,5 +36,9 @@ public class TicketService {
     }
     public void deleteTicketById(Long id){
         ticketRepository.deleteById(id);
+    }
+
+    public List<Ticket> findTicketByTicketCategory(TicketCategory ticketCategory) {
+        return ticketRepository.findTicketByTicketCategory(ticketCategory);
     }
 }

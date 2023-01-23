@@ -35,6 +35,20 @@ public class Ticket {
     @JoinColumn(name = "Client_id")
     private Client client;
 
+    public Ticket(Long id, LocalDate startDate, LocalDate endDate, TicketCategory ticketCategory, Set<Building> buildings, Trainer trainer, Client client) {
+        this.id = id;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.ticketCategory = ticketCategory;
+        this.buildings = buildings;
+        this.trainer = trainer;
+        this.client = client;
+    }
+
+    public Ticket() {
+
+    }
+
     public Trainer getTrainer() {
         return trainer;
     }
